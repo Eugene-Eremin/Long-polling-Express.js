@@ -29,16 +29,16 @@ const editNewMessage = async () => {
     message: newMessage.value,
     id: Date.now()
   }
-  await axios.post('http://localhost:5000/new-message', message)
+  await axios.post('http://localhost:5001/new-message', message)
 }
 
 const subscribe = async () => {
   try {
-    const { data } = await axios.get('http://localhost:5000/get-message')
+    const { data } = await axios.get('http://localhost:5001/get-message')
     messages.value = data
     console.log(messages.value)
     await subscribe()
-  } catch (error) {
+  } catch (e) {
     console.log(e)
     setTimeout(async () => {
       await subscribe()
